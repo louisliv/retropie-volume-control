@@ -13,7 +13,7 @@ THCONFIGS="/etc/triggerhappy/triggers.d"
 ##################
 echo -e " ${LRED}-${NC}${WHITE} Removing files...${NC}"
 rm -rf $RVC
-rm "$THCONFIGS/sound.conf"
+sudo rm "$THCONFIGS/sound.conf"
 
 ##########################
 ## Restart Triggerhappy ##

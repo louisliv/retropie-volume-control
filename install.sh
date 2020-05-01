@@ -21,7 +21,7 @@ THCONFIGS="/etc/triggerhappy/triggers.d"
 ########################
 echo -e " ${LRED}-${NC}${WHITE} Removing older versions...${NC}"
 rm -rf $RVC
-rm "$THCONFIGS/sound.conf"
+sudo rm "$THCONFIGS/sound.conf"
 
 #############################
 ##Packages and Dependencies##
@@ -84,18 +84,21 @@ function gitdownloader(){
 
 	for i in "${files[@]}"; do
 		echo "https://raw.githubusercontent.com/louisliv/retropie-volume-control/$RVCGITBRANCH/$i"
-		wget -N -q --show-progress "https://raw.githubusercontent.com/louisliv/retropie-volume-control/$RVCGITBRANCH/$i"
+		if $path == "run-as-root"
+		sudo wget -N -q --show-progress "https://raw.githubusercontent.com/louisliv/retropie-volume-control/$RVCGITBRANCH/$i"
 		#chmod a+rwx "$i"
+		else
+		wget -N -q --show-progress "https://raw.githubusercontent.com/louisliv/retropie-volume-control/$RVCGITBRANCH/$i"
 	done
 }
 
 cd $RVC
-RVCFILES=("sound-config.sh" "config.json" "main.py" "__init__.py" "volctrl.py" "set_config.py")
-gitdownloader ${RVCFILES[@]} "/retropie-volume-control"
+RVCFILES=("sound-config.sh" "config.json" "main.py" "__init__.py" "volctrl.py" "set_config.py" "uninstall.sh")
+gitdownloader ${RVCFILES[@]} "no-root"
 
 cd $THCONFIGS
 RVCFILES=("sound.conf")
-gitdownloader ${RVCFILES[@]} "/retropie-volume-control"
+gitdownloader ${RVCFILES[@]} "run-as-root"
 sleep 1
 ########################
 ########################
