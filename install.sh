@@ -2,34 +2,19 @@
 
 GREEN='\033[0;32m'
 LGREEN='\033[1;32m'
-RED='\033[0;31m'
 LRED='\033[1;31m'
-BLUE='\033[0;34m'
 WHITE='\033[1;37m'
 ORANGE='\033[0;33m'
 NC='\033[0m'
 
 clear
-echo -e " ${LRED}####################################${NC}"
-echo -e " ${LRED}#${NC}  ${GREEN}Installing RetroPie_Volume_Control${NC}  ${LRED}#${NC}"
-echo -e " ${LRED}####################################${NC}\n"
+echo -e " ${LRED}########################################${NC}"
+echo -e " ${LRED}#${NC}  ${GREEN}Installing RetroPie Volume Control${NC}  ${LRED}#${NC}"
+echo -e " ${LRED}########################################${NC}\n"
 
 RVCGITBRANCH="master"
 RVC="$HOME/retropie-volume-control"
-RP="$HOME/RetroPie"
-RPMENU="$RP/retropiemenu"
-RPSETUP="$HOME/RetroPie-Setup"
 THCONFIGS="/etc/triggerhappy/triggers.d"
-
-SCRIPTPATH=$(realpath $0)
-
-SOURCE="${BASH_SOURCE[0]}"
-while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
-  DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
-  SOURCE="$(readlink "$SOURCE")"
-  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
-done
-DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
 
 ########################
 ##remove older version##
@@ -111,7 +96,19 @@ gitdownloader ${RVCFILES[@]} "/retropie-volume-control"
 cd $THCONFIGS
 RVCFILES=("sound.conf")
 gitdownloader ${RVCFILES[@]} "/retropie-volume-control"
+sleep 1
+########################
+########################
 
-echo -e " ${LRED}-${NC}${WHITE} Restarting triggerhappy...${NC}"
+##########################
+## Restart Triggerhappy ##
+##########################
+echo -e "\n ${LRED}-${NC}${WHITE} Restarting triggerhappy...${NC}\n"
 sudo systemctl restart triggerhappy
+sleep 1
+
+###############
+## Complete! ##
+###############
+echo -e "\n ${LRED}-${NC}${WHITE} Installation Complete!...${NC}\n"
 sleep 1
