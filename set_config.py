@@ -5,7 +5,7 @@ def set_config(json_file_path, increment=None, mixer=None):
     config = json.load(config_file)
     config_file.close()
 
-    config['mixer'] = mixer if mixer else config['mixer']
+    config['mixer'] = mixer.replace("_", " ") if mixer else config['mixer']
     config['increment'] = int(increment) if increment else config['increment']
 
     config_file = open(json_file_path, "w")

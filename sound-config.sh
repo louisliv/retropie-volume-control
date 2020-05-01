@@ -33,14 +33,19 @@ function show_increment(){
 function display_mixer(){
 	local h=${1-10}			# box height default 10
 	local w=${2-41} 		# box width default 41
+	local z=${3-40}
 	dialog --backtitle "Retropie Sound Ctrl Config" --title "Set Mixer" \
 	--clear \
-	--inputbox "Mixer" ${h} ${w} 2>"${OUTPUT}"
+	--menu "Mixer" ${h} ${w} ${z} \
+	Master "Master" \
+	PCM "PCM" \
+	Line_Out "Line Out" \
+	Headphone "Headphone" 2>"${OUTPUT}"
 	$DIR/base/bin/python $DIR/main.py mixer=$(<$OUTPUT)
 }
 
 function show_mixer(){
-    display_mixer 6 60
+    display_mixer 16 51 45
 }
 
 while true
