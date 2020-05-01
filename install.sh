@@ -84,11 +84,13 @@ function gitdownloader(){
 
 	for i in "${files[@]}"; do
 		echo "https://raw.githubusercontent.com/louisliv/retropie-volume-control/$RVCGITBRANCH/$i"
-		if $path == "run-as-root"
+		if [[$path -eq "run-as-root"]]
+		then
 		sudo wget -N -q --show-progress "https://raw.githubusercontent.com/louisliv/retropie-volume-control/$RVCGITBRANCH/$i"
 		#chmod a+rwx "$i"
 		else
 		wget -N -q --show-progress "https://raw.githubusercontent.com/louisliv/retropie-volume-control/$RVCGITBRANCH/$i"
+		fi
 	done
 }
 
