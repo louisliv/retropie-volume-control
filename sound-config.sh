@@ -41,7 +41,7 @@ function display_mixer(){
 	PCM "PCM" \
 	Line_Out "Line Out" \
 	Headphone "Headphone" 2>"${OUTPUT}"
-	$DIR/base/bin/python $DIR/main.py mixer=$(<$OUTPUT)
+	python $DIR/main.py mixer=$(<$OUTPUT)
 }
 
 function show_mixer(){
