@@ -6,6 +6,8 @@ LRED='\033[1;31m'
 WHITE='\033[1;37m'
 ORANGE='\033[0;33m'
 NC='\033[0m'
+RUNASROOT="run-as-root"
+NOROOT="no-root"
 
 clear
 echo -e " ${LRED}########################################${NC}"
@@ -79,28 +81,33 @@ function gitdownloader(){
 
 	files=("$@")
 	((last_id=${#files[@]} - 1))
-	path=${files[last_id]}
+	PATH=${files[last_id]}
 	unset files[last_id]
 
 	for i in "${files[@]}"; do
 		echo "https://raw.githubusercontent.com/louisliv/retropie-volume-control/$RVCGITBRANCH/$i"
-		if ["$path" -eq "run-as-root"]; then
-		sudo wget -N -q --show-progress "https://raw.githubusercontent.com/louisliv/retropie-volume-control/$RVCGITBRANCH/$i"
-		#chmod a+rwx "$i"
-		else
-		wget -N -q --show-progress "https://raw.githubusercontent.com/louisliv/retropie-volume-control/$RVCGITBRANCH/$i"
-		fi
+
+		case $PATH in
+
+			"run-as-root")
+				/usr/bin/sudo /usr/bin/wget -N -q --show-progress "https://raw.githubusercontent.com/louisliv/retropie-volume-control/$RVCGITBRANCH/$i"
+				;;
+
+			"no-root")
+				/usr/bin/wget -N -q --show-progress "https://raw.githubusercontent.com/louisliv/retropie-volume-control/$RVCGITBRANCH/$i"
+				;;
+		esac
 	done
 }
 
 cd $RVC
 RVCFILES=("sound-config.sh" "config.json" "main.py" "__init__.py" "volctrl.py" "set_config.py" "uninstall.sh")
-gitdownloader ${RVCFILES[@]} "no-root"
+gitdownloader ${RVCFILES[@]} $NOROOT
 
 cd $THCONFIGS
 RVCFILES=("sound.conf")
-gitdownloader ${RVCFILES[@]} "run-as-root"
-sleep 1
+gitdownloader ${RVCFILES[@]} $RUNASROOT
+/usr/bin/sleep 1
 ########################
 ########################
 
@@ -108,11 +115,11 @@ sleep 1
 ## Restart Triggerhappy ##
 ##########################
 echo -e "\n ${LRED}-${NC}${WHITE} Restarting triggerhappy...${NC}\n"
-sudo systemctl restart triggerhappy
-sleep 1
+/usr/bin/sudo systemctl restart triggerhappy
+/usr/bin/sleep 1
 
 ###############
 ## Complete! ##
 ###############
 echo -e "\n ${LRED}-${NC}${WHITE} Installation Complete!...${NC}\n"
-sleep 1
+/usr/bin/sleep 1
