@@ -18,8 +18,8 @@ def set_volume(mixer, increment, direction):
         
         m.setvolume(next_vol)
     elif direction in ['mute']:
-        curvol = m.getvolume()[0]
-        if curvol == 0:
-            m.setvolume(50)
+        curvol = m.getmute()[0]
+        if curvol == 1:
+            m.setmute(0)
         else:
             m.setmute(1)
