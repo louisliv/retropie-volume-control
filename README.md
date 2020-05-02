@@ -11,10 +11,10 @@ To start the config script, follow these steps:
 1. `cd ~/retropie-volume-control`
 2. `./sound-config.sh`
 
-## Installation
-1. `wget -N https://raw.githubusercontent.com/louisliv/retropie-volume-control/master/install.sh`
-2. `chmod +x install.sh`
-3. `./install.sh`
+## Uninstall
+1. `wget -N https://raw.githubusercontent.com/louisliv/retropie-volume-control/master/uninstall.sh`
+2. `chmod +x uninstall.sh`
+3. `./uninstall.sh`
 
 ## Known Issues
 * Currently volume control will not work while in Emulationstation, only while in an emulator.
