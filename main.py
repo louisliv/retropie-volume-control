@@ -34,6 +34,5 @@ def process_args(args):
     return kwargs
 
 if __name__ == "__main__":
-    print('here')
     kwargs = process_args(sys.argv[1:])
     main(**kwargs)
