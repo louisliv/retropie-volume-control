@@ -16,6 +16,8 @@ echo -e " ${LRED}########################################${NC}\n"
 
 RVCGITBRANCH="master"
 RVC="$HOME/retropie-volume-control"
+RP="$HOME/RetroPie"
+RPMENU="$RP/retropiemenu"
 THCONFIGS="/etc/triggerhappy/triggers.d"
 
 ########################
@@ -24,6 +26,7 @@ THCONFIGS="/etc/triggerhappy/triggers.d"
 echo -e " ${LRED}-${NC}${WHITE} Removing older versions...${NC}"
 rm -rf $RVC
 sudo rm "$THCONFIGS/sound.conf"
+rm "$RPMENU/sound-config.sh"
 
 #############################
 ##Packages and Dependencies##
@@ -101,13 +104,29 @@ function gitdownloader(){
 }
 
 cd $RVC
-RVCFILES=("sound-config.sh" "config.json" "main.py" "__init__.py" "volctrl.py" "set_config.py" "uninstall.sh")
+RVCFILES=("config.json" "main.py" "__init__.py" "volctrl.py" "set_config.py")
 gitdownloader ${RVCFILES[@]} $NOROOT
+
+cd $RPMENU
+BGMFILES=("sound-config.sh")
+gitdownloader ${BGMFILES[@]} $NOROOT
 
 cd $THCONFIGS
 RVCFILES=("sound.conf")
 gitdownloader ${RVCFILES[@]} $RUNASROOT
 sleep 1
+
+########################
+########################
+
+##########################
+## Permissions ##
+##########################
+echo -e "\n ${LRED}-${NC}${WHITE} Setting permissions...${NC}\n"
+cd $RPMENU
+chmod +x sound-config.sh
+sleep 1
+
 ########################
 ########################
 
@@ -117,6 +136,9 @@ sleep 1
 echo -e "\n ${LRED}-${NC}${WHITE} Restarting triggerhappy...${NC}\n"
 /usr/bin/sudo systemctl restart triggerhappy
 sleep 1
+
+########################
+########################
 
 ###############
 ## Complete! ##
