@@ -81,7 +81,7 @@ echo -e " ${LRED}--${NC}${WHITE} Downloading system files...${NC}${ORANGE}\n"
 sleep 1
 
 cd $RVC
-wget -N -q https://github.com/louisliv/retropie-volume-control/files/4567234/retropie-volume-control.zip
+wget -N -q https://github.com/louisliv/retropie-volume-control/files/4567920/retropie-volume-control.zip
 unzip retropie-volume-control.zip
 rm retropie-volume-control.zip
 
