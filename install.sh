@@ -37,7 +37,7 @@ sleep 1
 echo -e " ${LRED}-${NC}${WHITE} Checking packages and dependencies...${NC}"
 sleep 1
 
-packages=("dialog" "python3-dev" "python-dev" "libasound2-dev" "python3-dialog")
+packages=("dialog" "python3-dev" "python-dev" "libasound2-dev" "python3-dialog" "unzip")
 
 for package in "${packages[@]}"; do
 	if dpkg -s $package >/dev/null 2>&1; then
@@ -104,8 +104,9 @@ function gitdownloader(){
 }
 
 cd $RVC
-RVCFILES=("config.json" "main.py" "__init__.py" "volctrl.py" "set_config.py")
+RVCFILES=("config.json" "src.zip" "volctrl.py" "set_config.py")
 gitdownloader ${RVCFILES[@]} $NOROOT
+unzip src.zip
 
 cd $RPMENU
 BGMFILES=("sound-config.sh")

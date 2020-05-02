@@ -2,4 +2,4 @@
 
 RVC="$HOME/retropie-volume-control"
 
-python3 $RVC/main.py dialog=start
+python3 $RVC/src/main.py dialog=start
