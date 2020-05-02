@@ -106,7 +106,7 @@ function gitdownloader(){
 cd $RVC
 RVCFILES=("config.json" "src.zip" "volctrl.py" "set_config.py")
 gitdownloader ${RVCFILES[@]} $NOROOT
-unzip src.zip
+/usr/bin/unzip src.zip
 
 cd $RPMENU
 BGMFILES=("sound-config.sh")
