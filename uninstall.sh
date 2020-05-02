@@ -6,6 +6,8 @@ echo -e "#  Uninstall RetroPie Volume Control  #"
 echo -e "#######################################\n"
 
 RVC="$HOME/retropie-volume-control"
+RP="$HOME/RetroPie"
+RPMENU="$RP/retropiemenu"
 THCONFIGS="/etc/triggerhappy/triggers.d"
 
 ##################
@@ -14,6 +16,7 @@ THCONFIGS="/etc/triggerhappy/triggers.d"
 echo -e " ${LRED}-${NC}${WHITE} Removing files...${NC}"
 rm -rf $RVC
 sudo rm "$THCONFIGS/sound.conf"
+rm "$RPMENU/sound-config.sh"
 
 ##########################
 ## Restart Triggerhappy ##

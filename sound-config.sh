@@ -1,12 +1,6 @@
 #!/bin/bash
 
-SOURCE="${BASH_SOURCE[0]}"
-while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
-  DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
-  SOURCE="$(readlink "$SOURCE")"
-  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
-done
-DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+RVCDIR = "$HOME/retropie-volume-control"
 
 # Store menu options selected by the user
 INPUT=/tmp/menu.sh.$$
@@ -23,7 +17,7 @@ function display_increment(){
 	dialog --backtitle "Retropie Sound Ctrl Config" --title "Set Increment" \
 	--clear \
 	--inputbox "Increment" ${h} ${w} 2>"${OUTPUT}"
-	$DIR/base/bin/python $DIR/main.py increment=$(<$OUTPUT)
+	python $RVCDIR/main.py increment=$(<$OUTPUT)
 }
 
 function show_increment(){
@@ -41,7 +35,7 @@ function display_mixer(){
 	PCM "PCM" \
 	Line_Out "Line Out" \
 	Headphone "Headphone" 2>"${OUTPUT}"
-	python $DIR/main.py mixer=$(<$OUTPUT)
+	python $RVCDIR/main.py mixer=$(<$OUTPUT)
 }
 
 function show_mixer(){
