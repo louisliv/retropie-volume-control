@@ -37,7 +37,7 @@ sleep 1
 echo -e " ${LRED}-${NC}${WHITE} Checking packages and dependencies...${NC}"
 sleep 1
 
-packages=("dialog" "python3-dev" "python-dev" "libasound2-dev")
+packages=("dialog" "python3-dev" "python-dev" "libasound2-dev" "python3-dialog")
 
 for package in "${packages[@]}"; do
 	if dpkg -s $package >/dev/null 2>&1; then
