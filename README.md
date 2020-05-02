@@ -22,3 +22,5 @@ To start the config script, follow these steps:
 ## Planned Additions
 * Add Retropie Volume Control config script to Retropie menu in Emulationstation
 * Fix Emulationstation volume control issue. 
+
+Test
