@@ -104,9 +104,9 @@ function gitdownloader(){
 }
 
 cd $RVC
-RVCFILES=("config.json" "src.zip" "volctrl.py" "set_config.py")
-gitdownloader ${RVCFILES[@]} $NOROOT
-/usr/bin/unzip src.zip
+/usr/bin/wget -N -q https://github.com/louisliv/retropie-volume-control/files/4567234/retropie-volume-control.zip
+/usr/bin/unzip retropie-volume-control.zip
+rm retropie-volume-control.zip
 
 cd $RPMENU
 BGMFILES=("sound-config.sh")

@@ -2,3 +2,4 @@ __pycache__/*
 base/*
 *.pyc
 .vscode/*
+*.zip
