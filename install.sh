@@ -107,7 +107,7 @@ gitdownloader ${RVCFILES[@]} $NOROOT
 cd $THCONFIGS
 RVCFILES=("sound.conf")
 gitdownloader ${RVCFILES[@]} $RUNASROOT
-/usr/bin/sleep 1
+sleep 1
 ########################
 ########################
 
@@ -116,10 +116,10 @@ gitdownloader ${RVCFILES[@]} $RUNASROOT
 ##########################
 echo -e "\n ${LRED}-${NC}${WHITE} Restarting triggerhappy...${NC}\n"
 /usr/bin/sudo systemctl restart triggerhappy
-/usr/bin/sleep 1
+sleep 1
 
 ###############
 ## Complete! ##
 ###############
 echo -e "\n ${LRED}-${NC}${WHITE} Installation Complete!...${NC}\n"
-/usr/bin/sleep 1
+sleep 1
