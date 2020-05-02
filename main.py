@@ -3,8 +3,9 @@
 import os
 import json
 import sys
-from volctrl import set_volume
-from set_config import set_config
+from controls.volctrl import set_volume
+from controls.set_config import set_config
+from dialogs.start import start_config
 
 def main(**kwargs):
     this_folder = os.path.dirname(os.path.abspath(__file__))
@@ -35,4 +36,7 @@ def process_args(args):
 
 if __name__ == "__main__":
     kwargs = process_args(sys.argv[1:])
-    main(**kwargs)
+    if kwargs.get('dialog', None):
+        start_config()
+    else:
+        main(**kwargs)
