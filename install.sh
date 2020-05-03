@@ -142,11 +142,11 @@ function runcommandsetup(){
 			[ -s $file ] && sed -i "1i $command" $file || echo "$command" > $file
 	fi
 }
-runcommandsetup "runcommand-onstart.sh" "bash \$HOME/retropie-volume-control/rvc_system.sh -i"
+runcommandsetup "runcommand-onstart.sh" "sudo systemctl restart triggerhapy"
 #use sudo because, owner can be root or file created incorrectly for any reason
 sudo chmod 777 autostart.sh
 sed -i "/rvc_system.sh/d" autostart.sh
-sed -i "1 i bash \$HOME/retropie-volume-control/rvc_system.sh -i --autostart" autostart.sh
+sed -i "sudo systemctl restart triggerhapy" autostart.sh
 sleep 1
 
 ##########################
