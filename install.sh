@@ -138,7 +138,7 @@ function runcommandsetup(){
 			#use sudo because, owner can be root or file created incorrectly for any reason
 			sudo chmod 777 $file
 			sleep 0.5
-			sed -i "triggerhappy/d" $file
+			sed -i "/triggerhappy/d" $file
 			[ -s $file ] && sed -i "1i $command" $file || echo "$command" > $file
 	fi
 }
