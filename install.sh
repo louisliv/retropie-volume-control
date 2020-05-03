@@ -145,8 +145,8 @@ function runcommandsetup(){
 runcommandsetup "runcommand-onstart.sh" "bash \$HOME/retropie-volume-control/rvc_system.sh -i"
 #use sudo because, owner can be root or file created incorrectly for any reason
 sudo chmod 777 autostart.sh
-sed -i "/bgm_system.sh/d" autostart.sh
-sed -i "1 i bash \$HOME/RetroPie-BGM-Player/bgm_system.sh -i --autostart" autostart.sh
+sed -i "/rvc_system.sh/d" autostart.sh
+sed -i "1 i bash \$HOME/retropie-volume-control/rvc_system.sh -i --autostart" autostart.sh
 sleep 1
 
 ##########################
