@@ -142,11 +142,11 @@ function runcommandsetup(){
 			[ -s $file ] && sed -i "1i $command" $file || echo "$command" > $file
 	fi
 }
-runcommandsetup "runcommand-onstart.sh" "sudo systemctl restart triggerhapy"
+runcommandsetup "runcommand-onstart.sh" "sudo systemctl restart triggerhappy"
 #use sudo because, owner can be root or file created incorrectly for any reason
 sudo chmod 777 autostart.sh
 sed -i "/triggerhappy/d" autostart.sh
-sed -i "1 i sudo systemctl restart triggerhapy" autostart.sh
+sed -i "1 i sudo systemctl restart triggerhappy" autostart.sh
 sleep 1
 
 ##########################

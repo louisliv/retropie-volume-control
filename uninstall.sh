@@ -16,7 +16,7 @@ SCRIPTPATH=$(realpath $0)
 ##################
 ## Remove files ##
 ##################
-echo -e " ${LRED}-${NC}${WHITE} Removing files...${NC}"
+echo -e "\n${LRED}-${NC}${WHITE} Removing files...${NC}\n"
 sudo rm "$THCONFIGS/sound.conf"
 sudo rm -rf $RVC
 rm "$RPMENU/retropie_volume_control.sh"
