@@ -138,15 +138,15 @@ function runcommandsetup(){
 			#use sudo because, owner can be root or file created incorrectly for any reason
 			sudo chmod 777 $file
 			sleep 0.5
-			sed -i "/rvc_system.sh/d" $file
+			sed -i "triggerhappy/d" $file
 			[ -s $file ] && sed -i "1i $command" $file || echo "$command" > $file
 	fi
 }
 runcommandsetup "runcommand-onstart.sh" "sudo systemctl restart triggerhapy"
 #use sudo because, owner can be root or file created incorrectly for any reason
 sudo chmod 777 autostart.sh
-sed -i "/rvc_system.sh/d" autostart.sh
-sed -i "sudo systemctl restart triggerhapy" autostart.sh
+sed -i "/bgm_system.sh/d" autostart.sh
+sed -i "1 i sudo systemctl restart triggerhapy" autostart.sh
 sleep 1
 
 ##########################
