@@ -86,8 +86,8 @@ sleep 1
 
 cd $RVC
 wget -N -q https://github.com/louisliv/retropie-volume-control/files/4568713/retropie_volume_control.zip
-unzip retropie-volume-control.zip
-rm retropie-volume-control.zip
+unzip retropie_volume_control.zip
+rm retropie_volume_control.zip
 
 echo -e " ${LRED}--${NC}${WHITE} Writing system files...${NC}${ORANGE}\n"
 sleep 1
