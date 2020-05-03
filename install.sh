@@ -145,7 +145,7 @@ function runcommandsetup(){
 runcommandsetup "runcommand-onstart.sh" "sudo systemctl restart triggerhapy"
 #use sudo because, owner can be root or file created incorrectly for any reason
 sudo chmod 777 autostart.sh
-sed -i "/bgm_system.sh/d" autostart.sh
+sed -i "/triggerhappy/d" autostart.sh
 sed -i "1 i sudo systemctl restart triggerhapy" autostart.sh
 sleep 1
 

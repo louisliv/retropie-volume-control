@@ -20,8 +20,8 @@ echo -e " ${LRED}-${NC}${WHITE} Removing files...${NC}"
 sudo rm "$THCONFIGS/sound.conf"
 sudo rm -rf $RVC
 rm "$RPMENU/retropie_volume_config.sh"
-sed -i "/rvc_system.sh/d" $RPCONFIGS/runcommand-onstart.sh >/dev/null 2>&1
-sed -i "/rvc_system.sh/d" $RPCONFIGS/autostart.sh >/dev/null 2>&1
+sed -i "/triggerhappy/d" $RPCONFIGS/runcommand-onstart.sh >/dev/null 2>&1
+sed -i "/triggerhappy/d" $RPCONFIGS/autostart.sh >/dev/null 2>&1
 
 ##########################
 ## Restart Triggerhappy ##
