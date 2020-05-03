@@ -19,7 +19,7 @@ SCRIPTPATH=$(realpath $0)
 echo -e " ${LRED}-${NC}${WHITE} Removing files...${NC}"
 sudo rm "$THCONFIGS/sound.conf"
 sudo rm -rf $RVC
-rm "$RPMENU/retropie_volume_config.sh"
+rm "$RPMENU/retropie_volume_control.sh"
 sed -i "/triggerhappy/d" $RPCONFIGS/runcommand-onstart.sh >/dev/null 2>&1
 sed -i "/triggerhappy/d" $RPCONFIGS/autostart.sh >/dev/null 2>&1
 
